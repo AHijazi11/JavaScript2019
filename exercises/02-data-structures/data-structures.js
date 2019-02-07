@@ -4,7 +4,7 @@
  */
 
 function createAnArray() {
-  var array = [];
+  var array = ['JavaScript','C++','Java'];
   /*** Add three items to the array ****/
   return array;
 }
@@ -17,6 +17,7 @@ function createAnArray() {
 
 function accessingAnArray() {
   var cars = ['BMW', 'Honda', 'Civic'];
+  return cars[0];
 }
 
 /**
@@ -28,7 +29,14 @@ function accessingAnArray() {
  * highestNumber([5, 1, 2, 3, 10]) // [10]
  *
  **/
-function highestNumber(array) {}
+function highestNumber(array) {
+var largestnumber = 0;
+for (var i=0; i<array.length; i++){
+  if(largestnumber < array[i]){largestnumber=array[i];}
+}
+//console.log(largestnumber);
+return largestnumber;
+}
 
 /**
  * Combine an array by using the spread operator
@@ -39,7 +47,9 @@ function highestNumber(array) {}
  * combineArray(['Japan','China','India'], ['USA','UK']) // ['Japan','China','India','USA','UK']
  **/
 
-function combineArray(array1, array2) {}
+function combineArray(array1, array2) {
+return array1.concat(array2);
+}
 
 /**
  * A palindrom is a word, phrase, or sequence that reads the same backward as forward, e.g., madam, nurses or run.
@@ -50,7 +60,18 @@ function combineArray(array1, array2) {}
  *
  */
 
-function isPalindrome(str) {}
+function isPalindrome(str) {
+  var array1 = str.split();
+  var array2;
+  for (var i=array1.length; i=0; i--){
+    array2 = array2.concat(array1[i]) 
+  }
+  console.log(array1);
+  if(array1==array2){var k = true;}
+  else{k = false;}
+return k
+}
+
 
 /**
  * Make an object that represents a dog called myDog which contains the keys
