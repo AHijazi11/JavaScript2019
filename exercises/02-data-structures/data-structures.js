@@ -59,17 +59,18 @@ return array1.concat(array2);
  * @return {Boolean}
  *
  */
-
 function isPalindrome(str) {
-  var array1 = str.split();
-  var array2;
-  for (var i=array1.length; i=0; i--){
-    array2 = array2.concat(array1[i]) 
+  var array1 = str.split('');
+  var array2=[];
+  for (var i=0; i<array1.length; i++){
+    array2.push(array1[array1.length-i-1]); 
   }
-  console.log(array1);
-  if(array1==array2){var k = true;}
+  for(var t=0; t<array1.length; t++){
+    if(array1[t]==array2[t])
+    {var k = true;}
   else{k = false;}
-return k
+  }
+return k;
 }
 
 
@@ -80,7 +81,10 @@ return k
  * @return {object}
  */
 
-function createDogObject() {}
+function createDogObject() {
+  var myDog={name: 'Spike', legs: 'yes', tails: 'no', owners: ['Tony', 'Jack']};
+  return myDog;
+}
 
 /**
  * Access testObj and return the value for hat inside clothes (which should be ballcap)
@@ -94,22 +98,22 @@ function accessObject() {
   };
   // Only change code below this line
 
-  var hatValue = clothes; // Change only this line of code
+  var hatValue = clothes.hat; // Change only this line of code
 
   return hatValue;
 }
 
 /**
  *   Update the object to contain your first and last name.
- *   Add at least three skills inside the array
+ *   Add three skills inside the array
  *   @return {object} student
  */
 
 function createStudentObject() {
   var student = {
-    firstname: '',
-    lastname: '',
-    skills: []
+    firstname: 'Ahmad',
+    lastname: 'Hijazi',
+    skills: ['SQL', 'Beanshell', 'E3']
   };
   // Only change code below this line.
 
@@ -131,6 +135,8 @@ function returnObjectProperties() {
     name: 'Rocket'
   };
   //Add code here
+  var array = Object.keys(dog);
+  return array;
   //hint you need to return an array
 }
 
@@ -141,7 +147,10 @@ function returnObjectProperties() {
  * @return {object} obj1 and obj2 combined
  */
 
-function combineObject(obj1, obj2) {}
+function combineObject(obj1, obj2) {
+  obj = Object.assign(obj1,obj2);
+  return obj;
+}
 
 /***
  *
@@ -151,9 +160,10 @@ function combineObject(obj1, obj2) {}
 function removeDuplicates() {
   // Use Sets to remove duplicate elements from the array
   var numbers = [2, 3, 4, 4, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 5, 32, 3, 4, 5];
-
-  /** Return the an array of unique values */
-  return;
+  var set = new Set(numbers);
+  var unique = [...set];
+  console.log(unique);
+  return unique;
 }
 
 module.exports = {
