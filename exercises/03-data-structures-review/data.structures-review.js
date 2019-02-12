@@ -3,15 +3,23 @@
  * @param  { array }
  * @return {array}
  * @example
- * upperCaseEachElementInArray(['javascript','html','css']) // ['Javascript','HTML','CSS']
- * upperCaseEachElementInArray(['Brad','Tom']) // ['Brad','Tom']
- *
+ * upperCaseEachElementInArray(['javascript','html','css']) // ['Javascript','Html','Css']
+ * upperCaseEachElementInArray(['brad','tom']) // ['Brad','Tom']
+ * 
  *
  */
 
 function upperCaseEachElementInArray(array) {
+  for(var i=0; i<array.length; i++){
+  var arraysplit = array[i].split('');
+  arraysplit[0]=arraysplit[0].toUpperCase();
+  var A = arraysplit.join('');
+  array[i] = A;
+  }
+  return array;
+  }
   /*** Dont forget to return an array with all elements being upper-cased */
-}
+
 
 /**
  *  Use the Spread Operator to add an additional name (middle name) to an object
@@ -22,10 +30,13 @@ function upperCaseEachElementInArray(array) {
  * @return {Object} a clone of the names object with a middle name added to it
  * @example
  * addMiddleNameToObject({firstName:'Tom',lastName:'Jerry'},'Harris')
- * // {firstName:'Tom',MiddleName:'Harris', lastName:'Jerry'}
+ * // {firstName:'Tom',middleName:'Harris', lastName:'Jerry'}
  */
 
-function addMiddleNameToObject(names, middleName) {}
+function addMiddleNameToObject(names, middleName) {
+  var FullName = {...names,middleName: middleName};
+  return FullName;
+}
 
 /**
  * Use split method to return an array on white space
@@ -36,7 +47,10 @@ function addMiddleNameToObject(names, middleName) {}
  * // ["I", "went", "home."]
  */
 
-function stringToArrayConverter(str) {}
+function stringToArrayConverter(str) {
+  var array = str.split(' ');
+  return array;
+}
 
 /**
  *
@@ -55,7 +69,15 @@ function stringToArrayConverter(str) {}
  * { "Javascript":2, "HTML":2, "CSS":2, "PHP":1 }
  */
 
-function dynamicObject(array) {}
+function dynamicObject(array) {
+  var set = new Set(array); //lines 73 -> 76 added so object keys are automatically defined
+  var array1=[...set];
+  var obj = {};
+  for(var i=0; i<array1.length; i++){Object.assign(obj,{[array1[i]]:0});}
+  for(z of array){
+    obj[z] = obj[z] +1;}
+    return obj;
+}
 
 module.exports = {
   upperCaseEachElementInArray,
