@@ -20,7 +20,12 @@ const calculator = () => {
    * that should return the value of "sum" above.
    * @returns {number} the value of sum
    */
+  var sum = 0;
+  //var obj= {setter: function(a){sum=sum + a; console.log(sum);}, getter: function(){return sum}}
+  var obj= {setter: function(a){sum=sum + a; console.log(sum);}, getters: function(){return sum}}
+  return obj; 
 };
+console.log(calculator())
 
 /**
  * Write a function called guessingGame which takes in one parameter amount.
@@ -47,7 +52,17 @@ const calculator = () => {
  * guessRound2(1); // "No more guesses. The answer was 0"
  */
 
-const guessingGame = numberOfRounds => {};
+const guessingGame = (numberOfRounds) => {
+var answer = Math.floor(Math.random() * 11);
+var guesses = 0;
+  return function myFunction(guess){
+    if(guesses<numberOfRounds){
+      if(guess == answer){guesses = guesses + 1; return 'You got it!'; }
+    else if (guess > answer){guesses = guesses + 1; return "You're too high!";}
+    else if (guess < answer){guesses = guesses + 1; return "You're too low!";}}
+    else {return "No more guesses. The answer was" + ' ' + answer;}
+  }
+};
 
 module.exports = {
   calculator,

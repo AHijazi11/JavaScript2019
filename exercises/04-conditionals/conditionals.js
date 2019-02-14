@@ -46,25 +46,26 @@ var updateProduct = (product, action) => {
   var newProduct;
   // Do not change above this line
 
-  if (action.type === "ADD") {
+  switch(action.type) {
+  case "ADD": 
     // Use the spread operator here instead
-    newProduct = product;
-    newProduct.cost = product.cost + action.payload;
-  } else if (action.type === "MULTIPLY") {
+    newProduct = {...product, cost: product.cost + action.payload};
+    break;
+  case "MULTIPLY": 
     // Use the spread operator here instead
-    newProduct = product;
-    newProduct.cost = product.cost * action.payload;
-  } else if (action.type === "SUBTRACT") {
+    newProduct = {...product, cost: product.cost * action.payload};
+    break;
+  case "SUBTRACT":
     // Use the spread operator here instead
-    newProduct = product;
-    newProduct.cost = product.cost - action.payload;
-  } else if (action.type === "DIVIDE") {
+    newProduct = {...product, cost: product.cost - action.payload};
+    break;
+  case "DIVIDE":
     // Use the spread operator here instead
-    newProduct = product;
-    newProduct.cost = product.cost / action.payload;
-  } else {
+    newProduct = {...product, cost: product.cost / action.payload};
+    break;
+  default:
     // Use the spread operator here instead
-    newProduct = product;
+    newProduct = {...product};
   }
 
   return newProduct; // Do not change this
