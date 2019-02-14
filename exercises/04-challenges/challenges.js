@@ -44,16 +44,14 @@ var repeatStringNumTimes = (str,B) => {
  *
  */
 
+
 var findLongestWordLength = (str) => {
-  var strsplitbyspace = str.split(' ');
-  for(let i = 0; i<strsplitbyspace.length; i++){
-    if(strsplitbyspace[i+1].length > strsplitbyspace[i].length){
-      var k = i+1;} 
-      else{k=i;}
-    }
-  
- return k;
-  }
+  let strsplitbyspace = str.split(' ');
+  let wordlength = [];
+  for(item of strsplitbyspace){
+  wordlength.push(item.length);} 
+  return Math.max(...wordlength);
+     }
 
 module.exports = {
   findLongestWordLength,
