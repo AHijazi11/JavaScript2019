@@ -7,7 +7,9 @@
  *  - Eddy
  * @param {string} name instuctor name
  */
-const printer = () => {};
+const printer = (name) => {
+  console.log('*' + ' ' + name + ' ' + '*');
+};
 
 /**
  * Loops through the array of strings
@@ -15,7 +17,9 @@ const printer = () => {};
  * @param {array}
  * @param {function} callback printer function
  */
-const printNames = () => {};
+const printNames = (array,fancyformat) => {
+  for(var item of array){fancyformat(item);}
+};
 
 module.exports = {
   printer,
