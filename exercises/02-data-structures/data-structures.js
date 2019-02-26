@@ -60,14 +60,15 @@ return array1.concat(array2);
  *
  */
 function isPalindrome(str) {
-  var array1 = str.split('');
-  var array2=[];
-  for (var i=0; i<array1.length; i++){
+  let array1 = str.split('');
+  let array2=[];
+  let k = '';
+  for (let i=0; i<array1.length; i++){
     array2.push(array1[array1.length-i-1]); 
   }
-  for(var t=0; t<array1.length; t++){
+  for(let t=0; t<array1.length; t++){
     if(array1[t]==array2[t])
-    {var k = true;}
+    {k = true;}
   else{k = false;}
   }
 return k;
@@ -111,12 +112,14 @@ function accessObject() {
 
 function createStudentObject() {
   var student = {
-    firstname: 'Ahmad',
-    lastname: 'Hijazi',
-    skills: ['SQL', 'Beanshell', 'E3']
+    firstname: '',
+    lastname: '',
+    skills: []
   };
   // Only change code below this line.
-
+student.firstname = 'Ahmad';
+student.lastname = 'Hijazi';
+student.skills = ['Javascript', 'SQL', 'Beanshell'];
   return student;
 }
 

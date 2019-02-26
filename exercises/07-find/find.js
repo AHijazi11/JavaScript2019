@@ -5,7 +5,13 @@
  * @param {function} callback
  * @returns {mixed} a single value in the array
  */
-const find = (arr, callback) => {};
+const find = (arr, callback) => {
+  let output = '';
+  for(let i=0; i<arr.length; i++){
+    if(callback(arr[i],i,arr)){output = arr[i]; break;}
+  }
+  return output;
+};
 
 /**
  * Find and return the matching user in an array of user objects
@@ -26,7 +32,9 @@ const find = (arr, callback) => {};
  * findUser(users, 1025);
  * // { id: 1025, username:"newyorkfarmer", email: "johndoe@example.com" }
  */
-const findUser = (arr, id) => {};
+const findUser = (arr, id) => {
+  return arr.find((user,index,arr)=> {return user.id == id;})
+};
 
 module.exports = {
   find,
