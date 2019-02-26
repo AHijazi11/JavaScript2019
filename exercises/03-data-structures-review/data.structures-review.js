@@ -70,10 +70,10 @@ function stringToArrayConverter(str) {
  */
 
 function dynamicObject(array) {
-  var set = new Set(array); //lines 73 -> 76 added so object keys are automatically defined
-  var array1=[...set];
+  // var set = new Set(array); //lines 73 -> 76 added so object keys are automatically defined
+  // var array1=[...set];
   var obj = {};
-  for(var i=0; i<array1.length; i++){Object.assign(obj,{[array1[i]]:0});}
+  for(var i=0; i<array.length; i++){Object.assign(obj,{[array[i]]:0});}
   for(z of array){
     obj[z] = obj[z] +1;}
     return obj;

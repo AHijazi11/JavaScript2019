@@ -9,10 +9,11 @@
  */
 
 var confirmEnding = (A,B) => {
-  var stringarray = A.split('')
-  if(stringarray[stringarray.length-1]==B){var C = true;}
+  let stringarray = A.split('')
+  let C = '';
+  if(stringarray[stringarray.length-1]==B){C = true;}
   else{C = false;}
-  return C
+  return C;
 };
 
 /**
