@@ -6,11 +6,9 @@
  * @returns {mixed} a single value in the array
  */
 const find = (arr, callback) => {
-  let output = '';
   for(let i=0; i<arr.length; i++){
-    if(callback(arr[i],i,arr)){output = arr[i]; break;}
+    if(callback(arr[i],i,arr)){return arr[i];}
   }
-  return output;
 };
 
 /**
@@ -33,7 +31,7 @@ const find = (arr, callback) => {
  * // { id: 1025, username:"newyorkfarmer", email: "johndoe@example.com" }
  */
 const findUser = (arr, id) => {
-  return arr.find((user,index,arr)=> {return user.id == id;})
+  return arr.find((user,index,arr)=> {return user.id === id;})
 };
 
 module.exports = {
