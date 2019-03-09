@@ -25,7 +25,7 @@ const { expect } = require("chai");
 /**
  * Each file has it's own scope. I can't access something from another
  * file unless I import it, because it is out of scope.
- * Including the functions from *exercises/08-unit-testing/unit-testing.js*
+ * Including the functions from *exercises/09-unit-testing/unit-testing.js*
  * so that I can test.
  */
 const { add, subtract, isEvenNumber, findAdults } = require("./unit-testing"); // relative pathway to unit-testing.js file
@@ -44,16 +44,31 @@ describe("Unit Testing", () => {
   /**
    * Write a unit test for `subtract` here.
    */
-
+  describe("subtract", () => {
+    it("should subtract two numbers", () => {
+      const difference = subtract(10,6);
+      expect(difference).to.equal(4);
+    });
+  });
   /**
    * Write two tests for `isEvenNumber` here.
    * Use a a different assertion than `.equal()`
    * @see https://www.chaijs.com/api/bdd/
    */
+  describe("IsEvenNumber", ()=> {
+  it("Will return true if number is even", ()=>{
+    const test = isEvenNumber(10);
+    expect(test).to.be.true;
+  });
+  it("Will return false if number is odd", ()=>{
+    const test = isEvenNumber(9);
+    expect(test).to.be.false;
+});
+  });
 
   describe("findAdults", () => {
     // Remove the `.skip` when you are ready to write this test
-    it.skip("will find, in a multidimensional array, all the people older than 18", () => {
+    it("will find, in a multidimensional array, all the people older than 18", () => {
       /**
        * Complete the unit test for findAdults here.
        * Hint: Arrays are passed by reference, so you will need to call on a test that deeply compares values.
@@ -64,10 +79,11 @@ describe("Unit Testing", () => {
         { name: "Aiden", age: 10 },
         { name: "Chloe", age: 16 }
       ];
+      expect(findAdults(people)).to.deep.equal([{ name: "Janet", age: 43 }]);
     });
 
     // Remove the `.skip` when you are ready to write this test
-    it.skip("will return an empty array if no adults are found", () => {
+    it("will return an empty array if no adults are found", () => {
       /**
        * Complete the unit test for findAdults here, where you use a different assertion than `.equal()`
        * @see https://www.chaijs.com/api/bdd/
@@ -77,6 +93,7 @@ describe("Unit Testing", () => {
         { name: "Emma", age: 17 },
         { name: "Ethan", age: 8 }
       ];
+      expect(findAdults(people)).to.be.empty;
     });
   });
 });
