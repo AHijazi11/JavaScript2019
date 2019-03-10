@@ -4,7 +4,10 @@
  */
 
 function createAnArray() {
-  var array = ['JavaScript','C++','Java'];
+  let array = [];
+  array.push('JavaScript');
+  array.push('C++');
+  array.push('Java');
   /*** Add three items to the array ****/
   return array;
 }
@@ -48,7 +51,8 @@ return largestnumber;
  **/
 
 function combineArray(array1, array2) {
-return array1.concat(array2);
+  let array = [...array1,...array2];
+  return array;
 }
 
 /**
@@ -165,7 +169,6 @@ function removeDuplicates() {
   var numbers = [2, 3, 4, 4, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 5, 32, 3, 4, 5];
   var set = new Set(numbers);
   var unique = [...set];
-  console.log(unique);
   return unique;
 }
 
