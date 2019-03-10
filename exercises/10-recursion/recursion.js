@@ -86,7 +86,7 @@ const findId = (data, id) => {
  */
 
 function deleteStore(stores, id) {
-  return stores.reduce((acc, store, idx) => {
+  stores.map((store, idx) => {
     if (store.id === id) {
       stores.splice(idx, 1);
     } else if (
@@ -96,8 +96,8 @@ function deleteStore(stores, id) {
     ) {
       deleteStore(store.branches, id);
     }
-    return stores;
-  }, []);
+  });
+  return stores;
 }
 
 module.exports = {
