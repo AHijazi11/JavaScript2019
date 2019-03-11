@@ -1,5 +1,5 @@
-const { departmentStores } = require('./recursion-departmentStores-data');
-const { tree } = require('./recursion-tree-data');
+const { departmentStores } = require("./recursion-departmentStores-data");
+const { tree } = require("./recursion-tree-data");
 
 /**
  * Using recursion, find the object in the node tree that has a given id.
