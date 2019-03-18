@@ -15,7 +15,7 @@ class App extends Component {
     Submitted : false
   }
 
-  set = e => {this.setState({ [e.target.name]: e.target.value });
+  set = e => {this.setState({ [e.target.name]: e.target.value });}
   handleSubmit = e => {e.preventDefault(); this.setState({Submitted : true})}
   
   render() {
@@ -26,5 +26,5 @@ class App extends Component {
       </div>
     );
   }
-
+  }
 export default App;
