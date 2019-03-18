@@ -4,17 +4,55 @@ import countries from "../../assets/countries";
 import states from '../../assets/states'
 
 class Address extends Component {
-  state = {
-    firstName: "",
-    lastName: "",
-    addressLine1: "",
-    city: "",
-    state: "",
-    postalCode: "",
-    Country: "",
-    Submitted : false
-  };
+  // state = {
+  //   firstName: "",
+  //   lastName: "",
+  //   addressLine1: "",
+  //   city: "",
+  //   state: "",
+  //   postalCode: "",
+  //   Country: "",
+  //   Submitted : false
+  // };
 
+  //Shortcut methods covered in class:
+  // set = (field, value) => {
+  //   this.setState({ [field]: value });
+  // };
+  // render() {
+  //   return (
+  //     <form className="container mt-4">
+  //       <div className="form-group">
+  //         <label htmlFor="firstName" className="control-label">
+  //           First Name
+  //         </label>
+  //         <input
+  //           id="firstName"
+  //           name="firstName"
+  //           value={this.state.firstName}
+  //           onChange={e => this.set("firstName", e.target.value)}
+  //           type="text"
+  //           className="form-control"
+  //         />
+
+  // set = e => {
+  //   this.setState({ [e.target.name]: e.target.value });
+  // };
+  // render() {
+  //   return (
+  //     <form className="container mt-4">
+  //       <div className="form-group">
+  //         <label htmlFor="firstName" className="control-label">
+  //           First Name
+  //         </label>
+  //         <input
+  //           id="firstName"
+  //           name="firstName"
+  //           value={this.state.firstName}
+  //           onChange={this.set}
+  //           type="text"
+  //           className="form-control"
+  //         />
   setfirstName = e => {this.setState({firstName : e.target.value})}
   setlastName = e => {this.setState({lastName : e.target.value})}
   setaddressLine1 = e => {this.setState({addressLine1 : e.target.value})}
@@ -38,8 +76,8 @@ class Address extends Component {
             name="firstName"
             type="text"
             className="form-control"
-            value = {this.state.firstName}
-            onChange = {this.setfirstName}
+            value = {this.props.firstName}
+            onChange = {this.props.set}
           />
         </div>
         <div className="form-group">
@@ -91,7 +129,7 @@ class Address extends Component {
           {
             states.map((state,idx) => {
               return (
-              <option>{state}</option>
+              <option key={idx}>{state}</option>
               )
               })
               }
@@ -122,7 +160,7 @@ class Address extends Component {
           {
             countries.map((country,idx) => {
               return (
-                <option>{country}</option>
+                <option key={idx}>{country}</option>
               )
             })
           }
