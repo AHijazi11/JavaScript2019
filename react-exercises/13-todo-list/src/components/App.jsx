@@ -20,7 +20,7 @@ class App extends Component {
   setuserinput = e => {this.setState({userinput : e.target.value})}
   handleSubmit = e => {e.preventDefault(); this.setState({hasSubmit : true})}
   addtolist = () => {this.setState({todolist : [...this.state.todolist,this.state.userinput]})}
-  DeleteTask = todolistindex => {this.setState({todolist: this.state.todolist.filter((entry,idx) => idx!==todolistindex)}); console.log('Hello');}
+  DeleteTask = todolistindex => this.setState({todolist: this.state.todolist.filter((entry,idx) => idx!==todolistindex)})
 
   render() {
     return (
@@ -51,9 +51,7 @@ class App extends Component {
             </div>
           </form>
         </header>
-        {/* <ul className="list-group">{this.state.todolist.map((x,idx) => <ListItem key={idx} idx={idx} DeleteTask = {(idx) => this.DeleteTask(idx)}>{x}</ListItem>)}</ul> */}
-        {/* <ul className="list-group">{this.state.todolist.map((x,idx) => <ListItem key={idx} idx={idx}>{x}</ListItem>)}</ul> */}
-        <ul className="list-group">{this.state.todolist.map((x,idx) => <ListItem key={idx} idx={idx} DeleteTask = {this.DeleteTask}>{x}</ListItem>)}</ul>
+        <ul className="list-group">{this.state.todolist.map((x,idx) => <ListItem key={idx} idx={idx} DeleteTask={this.DeleteTask}>{x}</ListItem>)}</ul>
       </div>
     );
   }
