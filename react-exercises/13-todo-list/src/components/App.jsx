@@ -11,12 +11,23 @@ import React, { Component } from "react";
 import ListItem from "./ListItem/ListItem";
 
 class App extends Component {
+  state = {
+    userinput : "",
+    hasSubmit : false,
+    todolist: []
+  }
+
+  setuserinput = e => {this.setState({userinput : e.target.value})}
+  handleSubmit = e => {e.preventDefault(); this.setState({hasSubmit : true})}
+  addtolist = () => {this.setState({todolist : [...this.state.todolist,this.state.userinput]})}
+  DeleteTask = todolistindex => {this.setState({todolist: this.state.todolist.filter((entry,idx) => idx!==todolistindex)}); console.log('Hello');}
+
   render() {
     return (
       <div className="container mt-4">
         <header className="App-header">
           <h1>Todo List</h1>
-          <form className="form-group">
+          <form className="form-group" onSubmit = {this.handleSubmit}>
             <div className="input-group mb-3">
               <input
                 type="text"
@@ -24,12 +35,15 @@ class App extends Component {
                 placeholder="Enter text"
                 aria-label="Enter text"
                 aria-describedby="button-add"
+                value = {this.state.userinput}
+                onChange = {this.setuserinput}
               />
               <div className="input-group-append">
                 <button
                   className="btn btn-primary"
                   type="subimit"
                   id="button-add"
+                  onClick = {this.addtolist}
                 >
                   Add
                 </button>
@@ -37,7 +51,9 @@ class App extends Component {
             </div>
           </form>
         </header>
-        <ul className="list-group">{/* Put ListItems in here */}</ul>
+        {/* <ul className="list-group">{this.state.todolist.map((x,idx) => <ListItem key={idx} idx={idx} DeleteTask = {(idx) => this.DeleteTask(idx)}>{x}</ListItem>)}</ul> */}
+        {/* <ul className="list-group">{this.state.todolist.map((x,idx) => <ListItem key={idx} idx={idx}>{x}</ListItem>)}</ul> */}
+        <ul className="list-group">{this.state.todolist.map((x,idx) => <ListItem key={idx} idx={idx} DeleteTask = {this.DeleteTask}>{x}</ListItem>)}</ul>
       </div>
     );
   }
