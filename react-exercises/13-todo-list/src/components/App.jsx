@@ -19,7 +19,7 @@ class App extends Component {
 
   setuserinput = e => {this.setState({userinput : e.target.value})}
   handleSubmit = e => {e.preventDefault(); this.setState({hasSubmit : true})}
-  addtolist = () => {this.setState({todolist : [...this.state.todolist,this.state.userinput]})}
+  addtolist = () => {this.setState({todolist : [...this.state.todolist,this.state.userinput], userinput : ""})}
   DeleteTask = todolistindex => this.setState({todolist: this.state.todolist.filter((entry,idx) => idx!==todolistindex)})
 
   render() {
