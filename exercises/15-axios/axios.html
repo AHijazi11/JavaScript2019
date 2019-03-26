@@ -4,6 +4,11 @@
   <meta charset="utf-8">
   <title>Axios Exercise</title>
   <link rel="stylesheet" href="axios.css">
+  <style>
+  .hidden {
+    display: none;
+  }
+  </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
   <script src="axios.js" defer></script>
@@ -16,6 +21,9 @@
         <a href="http://rickandmorty.wikia.com/wiki/Rick_Sanchez">
           <img class="img-rounded" alt="Get Schwifty" id="get-schwifty" src="https://i.ytimg.com/vi/UFFi9PWKDjg/maxresdefault.jpg" width="500" height="281" />
         </a>
+        <div class="alert alert-danger hidden" id="error">
+
+        </div>
         <p id="photo-caption">
           <em>Rick and his homies, gettin' schwifty.</em>
         </p>
