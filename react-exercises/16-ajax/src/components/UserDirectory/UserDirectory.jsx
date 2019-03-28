@@ -55,12 +55,12 @@ class UserDirectory extends Component {
   };
 
   Filter = e => {
-    // console.log(this.state.users);
-    let filteredusers = this.state.users.filter((x, index) => {
-      const name = x.name.first + x.name.last;
-      return name.match(e.target.value);
+    console.log(this.state.users);
+    let filteredusers = this.state.fixeduserarray.filter(user => {
+      const name = user.name.first + " " + user.name.last;
+      return name.match(e.target.value.toLowerCase());
     });
-    //console.log(filteredusers);
+    console.log(filteredusers);
     this.setState({ userInput: e.target.value, users: filteredusers });
   };
   render() {
@@ -72,7 +72,7 @@ class UserDirectory extends Component {
             placeholder="Search..."
             aria-label="Search"
             className="search"
-            value={this.userInput}
+            value={this.state.userInput}
             onChange={this.Filter}
           />
         </div>
