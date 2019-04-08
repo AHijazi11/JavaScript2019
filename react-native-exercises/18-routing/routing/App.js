@@ -7,7 +7,18 @@
  */
 
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, SafeAreaView, View } from "react-native";
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  View,
+  ScrollView
+} from "react-native";
+import { NativeRouter, Switch, Route } from "react-router-native";
+import RickMorty from "../routing/RickMorty";
+import Menu from "../routing/Menu";
+import UserDirectory from "../routing/UserDirectory";
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -16,12 +27,15 @@ const instructions = Platform.select({
     "Shake or press menu button for dev menu"
 });
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
   render() {
     return (
       <SafeAreaView>
-        <Text>Insert Routing Here</Text>
+        <NativeRouter>
+          <Route exact path="/" component={Menu} />
+          <Route exact path="/RickMorty" component={RickMorty} />
+          <Route exact path="/UserDirectory" component={UserDirectory} />
+        </NativeRouter>
       </SafeAreaView>
     );
   }
