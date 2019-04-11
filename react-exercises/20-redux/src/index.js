@@ -9,5 +9,15 @@
 import React from "react";
 import { render } from "react-dom";
 import App from "./components/AppContainer"; // We will talk about the container later
+import reducer from "./reducer";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
 
-render(<App />, document.getElementById("root"));
+const store = createStore(reducer);
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);

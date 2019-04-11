@@ -7,6 +7,9 @@ const reducer = (
    */
   state = {
     count: 0,
+    isVisible: false,
+    color: "",
+    todoInput: "",
     todos: ["Finish this assignment", "Read a book"]
   },
   action
@@ -18,9 +21,34 @@ const reducer = (
         ...state,
         count: state.count + 1
       };
-    /**
-     * Add additional case statements here
-     */
+    case types.DECREASE_COUNT:
+      return {
+        ...state,
+        count: state.count - 1
+      };
+    case types.TOGGLE_TEXT:
+      return {
+        ...state,
+        isVisible: !state.isVisible
+      };
+    case types.SELECT_COLOR:
+      return {
+        ...state,
+        color: action.payload
+      };
+
+    case types.SAVE_INPUT:
+      return {
+        ...state,
+        todoInput: action.payload
+      };
+
+    case types.ADD_TASK:
+      return {
+        ...state,
+        todos: [...state.todos, state.todoInput]
+      };
+
     default:
       return state;
   }

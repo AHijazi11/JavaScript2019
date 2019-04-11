@@ -62,7 +62,7 @@ function App(props) {
       </section>
       {/* TODO List */}
       <section className="mt-5">
-        <form className="form-inline" onSubmit={props.addTodo}>
+        <form className="form-inline" onSubmit={e => props.addTodo(e)}>
           <div className="form-group">
             <input
               type="text"
@@ -77,8 +77,12 @@ function App(props) {
           </div>
         </form>
         <ul className="list-group mt-2">
-          {props.todos.map(todo => {
-            return <li className="list-group-item">{todo}</li>;
+          {props.todos.map((todo, idx) => {
+            return (
+              <li className="list-group-item" key={idx}>
+                {todo}
+              </li>
+            );
           })}
         </ul>
       </section>
