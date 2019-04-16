@@ -11,7 +11,6 @@ import ListItem from "./ListItem/ListItem";
 
 class Todo extends Component {
   state = {
-    userInput: "",
     todos: []
   };
   setUserInput = userInput => {
@@ -24,9 +23,9 @@ class Todo extends Component {
   addTodo = e => {
     e.preventDefault();
     this.setState({
-      todos: [...this.state.todos, this.state.userInput],
-      userInput: ""
+      todos: [...this.state.todos, this.props.userinput]
     });
+    this.props.setUserInput("");
   };
   /**
    * This will be passed down from the container as props instead
@@ -51,9 +50,8 @@ class Todo extends Component {
               placeholder="Enter text"
               aria-label="Enter text"
               aria-describedby="button-add"
-              value={this.state.userInput}
+              value={this.props.userinput}
               onChange={e => {
-                this.setUserInput(e.target.value);
                 this.props.setUserInput(e.target.value);
               }}
             />
