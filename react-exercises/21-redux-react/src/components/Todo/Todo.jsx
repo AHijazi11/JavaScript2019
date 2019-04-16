@@ -52,13 +52,17 @@ class Todo extends Component {
               aria-label="Enter text"
               aria-describedby="button-add"
               value={this.state.userInput}
-              onChange={e => this.setUserInput(e.target.value)}
+              onChange={e => {
+                this.setUserInput(e.target.value);
+                this.props.setUserInput(e.target.value);
+              }}
             />
             <div className="input-group-append">
               <button
                 className="btn btn-primary"
                 type="subimit"
                 id="button-add"
+                onClick={this.props.addTodo}
               >
                 Add
               </button>

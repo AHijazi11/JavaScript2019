@@ -31,3 +31,10 @@ export function deleteTodo(todoIndex) {
     todoIndex
   };
 }
+
+export function setuserinput(x) {
+  return {
+    type: types.SET_USERINPUT,
+    payload: x
+  };
+}

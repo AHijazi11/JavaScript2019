@@ -4,18 +4,20 @@
 
 import { connect } from "react-redux";
 import Todo from "./Todo";
-import { addTodo, deleteTodo } from "../../actions";
+import { addTodo, deleteTodo, setuserinput } from "../../actions";
 
 function mapPropsToState(state) {
   return {
-    todos: state.todos
+    todos: state.todos,
+    userinput: state.userinput
   };
 }
 
 function mapDispatchToState(dispatch) {
   return {
     addTodo: userInput => dispatch(addTodo(userInput)),
-    deleteTodo: todoIndex => dispatch(deleteTodo(todoIndex))
+    deleteTodo: todoIndex => dispatch(deleteTodo(todoIndex)),
+    setUserInput: userInput => dispatch(setuserinput(userInput))
   };
 }
 

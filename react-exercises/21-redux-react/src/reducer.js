@@ -11,7 +11,8 @@ const reducer = (
   state = {
     diceNumber: generateRandomDiceNumber(),
     count: 0,
-    todos: []
+    todos: [],
+    userinput: ""
   },
   action
 ) => {
@@ -42,6 +43,11 @@ const reducer = (
         todos: state.todos.filter((todo, index) => {
           return index !== action.todoIndex;
         })
+      };
+    case types.SET_USERINPUT:
+      return {
+        ...state,
+        userinput: action.payload
       };
     default:
       return state;
