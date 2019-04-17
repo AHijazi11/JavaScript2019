@@ -35,7 +35,7 @@ const reducer = (
     case types.ADD_TODO:
       return {
         ...state,
-        todos: [...state.todos, action.userInput]
+        todos: [...state.todos, state.userinput]
       };
     case types.DELETE_TODO:
       return {

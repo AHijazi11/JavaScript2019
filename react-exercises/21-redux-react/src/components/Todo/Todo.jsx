@@ -10,39 +10,39 @@ import React, { Component } from "react";
 import ListItem from "./ListItem/ListItem";
 
 class Todo extends Component {
-  state = {
-    todos: []
-  };
-  setUserInput = userInput => {
-    this.setState({ userInput: userInput });
-  };
+  // state = {
+  //   todos: []
+  // };
+  // setUserInput = userInput => {
+  //   this.setState({ userInput: userInput });
+  // };
   /**
    * This will be passed down from the container as props instead
    * (but you still need to prevent the form from submitting and pass up user input)
    */
-  addTodo = e => {
-    e.preventDefault();
-    this.setState({
-      todos: [...this.state.todos, this.props.userinput]
-    });
-    this.props.setUserInput("");
-  };
+  // addTodo = e => {
+  //   e.preventDefault();
+  //   this.setState({
+  //     todos: [...this.state.todos, this.props.userinput]
+  //   });
+  //   this.props.setUserInput("");
+  // };
   /**
    * This will be passed down from the container as props instead
    * (but you still need to pass up the todo index)
    */
-  deleteTodo = todoIndex => {
-    this.setState({
-      todos: this.state.todos.filter((item, index) => {
-        return index !== todoIndex;
-      })
-    });
-  };
+  // deleteTodo = todoIndex => {
+  //   this.setState({
+  //     todos: this.state.todos.filter((item, index) => {
+  //       return index !== todoIndex;
+  //     })
+  //   });
+  // };
   render() {
     return (
       <div className="mt-4">
         <h1 className="h3">Todo List</h1>
-        <form className="form-group" onSubmit={this.addTodo}>
+        <form className="form-group" onSubmit={e => e.preventDefault()}>
           <div className="input-group mb-3">
             <input
               type="text"
@@ -69,11 +69,11 @@ class Todo extends Component {
         </form>
         <ul className="list-group">
           {/* The todos will be passed down as props */}
-          {this.state.todos.map((text, index) => {
+          {this.props.todos.map((text, index) => {
             const key = `todo-item-${index}`;
             return (
               <ListItem
-                deleteTodo={this.deleteTodo}
+                deleteTodo={() => this.props.deleteTodo(index)}
                 todoIndex={index}
                 key={key}
               >
