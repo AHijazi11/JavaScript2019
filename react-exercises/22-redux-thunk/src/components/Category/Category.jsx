@@ -42,7 +42,7 @@ function Category(props) {
               <Nominee
                 key={key}
                 nominee={nominee}
-                onClick={/* Replace null with function */ null}
+                onClick={() => props.vote(categoryId, index)}
                 isSelected={isSelected}
               />
             );
@@ -56,10 +56,12 @@ function Category(props) {
           />
         </div>
         <div className="mt-3">
-          {/**
-           * If there is an AJAX failure with voting, display the error message
-           * "This is embarassing. We were unable to save your vote. Please try again later."
-           */}
+          {props.hasError && (
+            <ErrorMessage>
+              This is embarassing. We were unable to save your vote. Please try
+              again later.
+            </ErrorMessage>
+          )}
         </div>
       </MainLayout>
     );

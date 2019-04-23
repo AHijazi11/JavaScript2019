@@ -8,14 +8,32 @@ import { voteRequest } from "../services/api";
  * - ajax request failure
  */
 
+const ajaxLoading = () => {
+  return {
+    type: types.VOTE_PENDING
+  };
+};
 const ajaxSuccess = (categoryId, nomineeIndex) => {
-  /**
-   * Complete this function
-   */
+  return {
+    type: types.VOTE_FULFILLED,
+    categoryId,
+    nomineeIndex
+  };
+};
+
+const ajaxFailure = () => {
+  return {
+    type: types.VOTE_REJECTED
+  };
 };
 
 export const vote = (categoryId, nomineeIndex) => {
   return dispatch => {
+    dispatch(ajaxLoading());
+    voteRequest(categoryId, nomineeIndex)
+      .then(() => dispatch(ajaxSuccess(categoryId, nomineeIndex)))
+      .catch(() => dispatch(ajaxFailure()));
+
     /**
      * Using "src/actions/fetchAllNomineesActions.js" as an example, do the following:
      * - dispatch the loading ajax action
